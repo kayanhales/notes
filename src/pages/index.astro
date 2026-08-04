@@ -1,8 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const recentPosts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 5);
 ---
 
 <!doctype html>
@@ -13,11 +19,82 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<h1>Hey, I'm Kay.</h1>
-			<p>
-				These are my notes on technology, AI, faith, career, motherhood, immigration and everyday life.
-			</p>
+			<h1>These are Kayan's notes on technology, AI, faith, career, motherhood, immigration and everyday life.
+			</h1>
+			<section class="recent-posts">
+				<h2>notes</h2>
+				<p class="subtitle">my notes on things I'm learning and thinking about.</p>
+				<ul>
+					{
+						recentPosts.map((post) => (
+							<li>
+								<a href={`/blog/${post.id}/`}>
+									<span class="date">
+										<FormattedDate date={post.data.pubDate} />
+									</span>
+									<h4 class="title">{post.data.title}</h4>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+				<h2 class="all-link"><a href="/blog">all notes</a></h2>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+<style>
+	.recent-posts {
+		margin-top: 3em;
+	}
+	.recent-posts .subtitle {
+		font-size: 0.8em;
+		color: rgb(var(--gray));
+		margin: 0.3em 0 0 0;
+	}
+	.recent-posts ul {
+		list-style: none;
+		margin: 1em 0 0 0;
+		padding: 0;
+	}
+	.recent-posts li {
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	.recent-posts ul a {
+		display: flex;
+		align-items: center;
+		gap: 1em;
+		padding: 0.85em 0;
+		text-decoration: none;
+		color: rgb(var(--black));
+	}
+	.recent-posts .date {
+		flex-shrink: 0;
+		white-space: nowrap;
+		font-size: 0.7em;
+		color: rgb(var(--gray));
+	}
+	.recent-posts .title {
+		margin: 0;
+	}
+	.recent-posts a:hover .title {
+		text-decoration: underline;
+		text-decoration-color: rgb(var(--accent2));
+		text-decoration-thickness: 2px;
+	}
+	.all-link {
+		margin-top: 1.2em;
+	}
+	.all-link a {
+		text-decoration: none;
+	}
+	.all-link a:hover {
+		color: rgb(var(--accent));
+	}
+	@media (max-width: 480px) {
+		.recent-posts a {
+			gap: 0.6em;
+		}
+	}
+</style>
