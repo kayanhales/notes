@@ -4,27 +4,46 @@ import SocialLinks from './SocialLinks.astro';
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Kayan Clarke. All rights reserved.
-	<div class = social-links><SocialLinks/></div>
+	<div class="footer-content">
+		<span class="copyright">&copy; {today.getFullYear()} Kayan Clarke. All rights reserved.</span>
+		<SocialLinks />
+	</div>
 </footer>
 <style>
 	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
+		width: 600px;
+		max-width: calc(100% - 2em);
+		margin: 0 auto;
+		padding: 2em 1em 4em 1em;
 		color: rgb(var(--gray));
 		text-align: center;
 	}
-	.social-links {
+	.footer-content {
 		display: flex;
+		align-items: center;
 		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
+		flex-wrap: wrap;
+		gap: 0.75em;
 	}
-	.social-links a {
+	.copyright {
+		font-size: 0.75em;
+	}
+	.footer-content :global(.social-links) {
+		display: flex;
+		align-items: center;
+		gap: 0.6em;
+		margin: 0;
+	}
+	.footer-content :global(.social-links a) {
+		display: flex;
 		text-decoration: none;
 		color: rgb(var(--gray));
 	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
+	.footer-content :global(.social-links a:hover) {
+		color: rgb(var(--accent));
+	}
+	.footer-content :global(.social-links svg) {
+		width: 14px;
+		height: 14px;
 	}
 </style>
