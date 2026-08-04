@@ -5,6 +5,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getReadingTime } from '../utils/readingTime';
 
 const recentPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -22,17 +23,20 @@ const recentPosts = (await getCollection('blog'))
 			<h1>These are Kayan's notes on technology, AI, faith, career, motherhood, immigration and everyday life.
 			</h1>
 			<section class="recent-posts">
-				<h2>notes</h2>
-				<p class="subtitle">my notes on things I'm learning and thinking about.</p>
 				<ul>
 					{
 						recentPosts.map((post) => (
 							<li>
 								<a href={`/blog/${post.id}/`}>
-									<span class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</span>
+									<div class="meta">
+										<span class="date">
+											<FormattedDate date={post.data.pubDate} />
+										</span>
+										<span aria-hidden="true">&middot;</span>
+										<span class="read-time">{getReadingTime(post.body ?? '')}</span>
+									</div>
 									<h4 class="title">{post.data.title}</h4>
+									<p class="teaser">{post.data.description}</p>
 								</a>
 							</li>
 						))
@@ -48,14 +52,9 @@ const recentPosts = (await getCollection('blog'))
 	.recent-posts {
 		margin-top: 3em;
 	}
-	.recent-posts .subtitle {
-		font-size: 0.8em;
-		color: rgb(var(--gray));
-		margin: 0.3em 0 0 0;
-	}
 	.recent-posts ul {
 		list-style: none;
-		margin: 1em 0 0 0;
+		margin: 0;
 		padding: 0;
 	}
 	.recent-posts li {
@@ -63,20 +62,26 @@ const recentPosts = (await getCollection('blog'))
 	}
 	.recent-posts ul a {
 		display: flex;
-		align-items: center;
-		gap: 1em;
-		padding: 0.85em 0;
+		flex-direction: column;
+		gap: 0.2em;
+		padding: 1em 0;
 		text-decoration: none;
 		color: rgb(var(--black));
 	}
-	.recent-posts .date {
-		flex-shrink: 0;
+	.recent-posts .meta {
+		display: flex;
+		gap: 0.4em;
 		white-space: nowrap;
 		font-size: 0.7em;
 		color: rgb(var(--gray));
 	}
 	.recent-posts .title {
 		margin: 0;
+	}
+	.recent-posts .teaser {
+		margin: 0;
+		font-size: 0.85em;
+		color: rgb(var(--gray));
 	}
 	.recent-posts a:hover .title {
 		text-decoration: underline;
@@ -85,16 +90,12 @@ const recentPosts = (await getCollection('blog'))
 	}
 	.all-link {
 		margin-top: 1.2em;
+		font-size: 1.3em;
 	}
 	.all-link a {
 		text-decoration: none;
 	}
 	.all-link a:hover {
 		color: rgb(var(--accent));
-	}
-	@media (max-width: 480px) {
-		.recent-posts a {
-			gap: 0.6em;
-		}
 	}
 </style>
