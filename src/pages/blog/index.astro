@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { getReadingTime } from '../../utils/readingTime';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -29,14 +30,15 @@ const posts = (await getCollection('blog')).sort(
 			}
 			a {
 				display: flex;
-				align-items: center;
-				gap: 1em;
-				padding: 0.85em 0;
+				flex-direction: column;
+				gap: 0.2em;
+				padding: 1em 0;
 				text-decoration: none;
 				color: rgb(var(--black));
 			}
-			.date {
-				flex-shrink: 0;
+			.meta {
+				display: flex;
+				gap: 0.4em;
 				white-space: nowrap;
 				font-size: 0.7em;
 				color: rgb(var(--gray));
@@ -44,15 +46,15 @@ const posts = (await getCollection('blog')).sort(
 			.title {
 				margin: 0;
 			}
+			.teaser {
+				margin: 0;
+				font-size: 0.85em;
+				color: rgb(var(--gray));
+			}
 			a:hover .title {
 				text-decoration: underline;
 				text-decoration-color: rgb(var(--accent2));
 				text-decoration-thickness: 2px;
-			}
-			@media (max-width: 480px) {
-				a {
-					gap: 0.6em;
-				}
 			}
 		</style>
 	</head>
@@ -65,10 +67,15 @@ const posts = (await getCollection('blog')).sort(
 					posts.map((post) => (
 						<li>
 							<a href={`/blog/${post.id}/`}>
-								<span class="date">
-									<FormattedDate date={post.data.pubDate} />
-								</span>
+								<div class="meta">
+									<span class="date">
+										<FormattedDate date={post.data.pubDate} />
+									</span>
+									<span aria-hidden="true">&middot;</span>
+									<span class="read-time">{getReadingTime(post.body ?? '')}</span>
+								</div>
 								<h4 class="title">{post.data.title}</h4>
+								<p class="teaser">{post.data.description}</p>
 							</a>
 						</li>
 					))

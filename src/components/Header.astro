@@ -12,7 +12,7 @@ import SocialLinks from './SocialLinks.astro';
 			<HeaderLink href="/blog">Notes</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
 		</div>
-		<div class = social-links><SocialLinks/></div>
+		<SocialLinks />
 	</nav>
 </header>
 <style>
@@ -60,22 +60,24 @@ import SocialLinks from './SocialLinks.astro';
 		color: rgb(var(--accent));
 		border-bottom-color: rgb(var(--accent2));
 	}
-	.social-links,
-	.social-links a {
+	:global(nav .social-links) {
 		display: flex;
+		align-items: center;
+		gap: 0.6em;
 	}
-	.social-links a {
-		color: rgb(var(--gray));
+	:global(nav .social-links a) {
+		display: flex;
+		color: rgb(var(--accent2));
 	}
-	.social-links a:hover {
+	:global(nav .social-links a:hover) {
 		color: rgb(var(--accent));
 	}
-	.social-links svg {
-		width: 16px;
-		height: 16px;
+	:global(nav .social-links svg) {
+		width: 13px;
+		height: 13px;
 	}
 	@media (max-width: 720px) {
-		.social-links {
+		:global(nav .social-links) {
 			display: none;
 		}
 	}
