@@ -42,7 +42,7 @@ const recentPosts = (await getCollection('blog'))
 						))
 					}
 				</ul>
-				<h2 class="all-link"><a href="/blog">all notes</a></h2>
+				<a href="/blog" class="btn all-link">view all notes &rarr;</a>
 			</section>
 		</main>
 		<Footer />
@@ -89,13 +89,6 @@ const recentPosts = (await getCollection('blog'))
 		text-decoration-thickness: 2px;
 	}
 	.all-link {
-		margin-top: 1.2em;
-		font-size: 1.3em;
-	}
-	.all-link a {
-		text-decoration: none;
-	}
-	.all-link a:hover {
-		color: rgb(var(--accent));
+		margin-top: 1.5em;
 	}
 </style>

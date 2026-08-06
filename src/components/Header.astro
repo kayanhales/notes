@@ -2,6 +2,7 @@
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import SocialLinks from './SocialLinks.astro';
+import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <header>
@@ -12,7 +13,10 @@ import SocialLinks from './SocialLinks.astro';
 			<HeaderLink href="/blog">Notes</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
 		</div>
-		<SocialLinks />
+		<div class="right-controls">
+			<SocialLinks />
+			<ThemeToggle />
+		</div>
 	</nav>
 </header>
 <style>
@@ -25,6 +29,7 @@ import SocialLinks from './SocialLinks.astro';
 	h2 {
 		margin: 0;
 		font-size: 1.6em;
+		font-family: var(--font-logo);
 	}
 
 	h2 a,
@@ -59,6 +64,11 @@ import SocialLinks from './SocialLinks.astro';
 	.internal-links a.active {
 		color: rgb(var(--accent));
 		border-bottom-color: rgb(var(--accent2));
+	}
+	.right-controls {
+		display: flex;
+		align-items: center;
+		gap: 1em;
 	}
 	:global(nav .social-links) {
 		display: flex;

@@ -12,6 +12,7 @@
 :root {
 	--black: 0, 0, 0;
 	--bg: 255, 255, 255;
+	--card-bg: 255, 255, 255;
 	--heading: 8, 99, 117; /* Stormy Teal */
 	--accent: 60, 22, 66; /* Dark Amethyst */
 	--accent2: 29, 211, 176; /* Turquoise */
@@ -20,25 +21,46 @@
 	--gray: 148, 148, 148;
 	--gray-light: 221, 221, 221;
 	--gray-dark: 0, 0, 0;
-	--font-sans: 'Maven Pro', ui-sans-serif, system-ui, sans-serif;
-	--font-heading: 'Maven Pro', ui-sans-serif, system-ui, sans-serif;
+	--btn-bg: 8, 99, 117;
+	--btn-bg-hover: 60, 22, 66;
+	--font-sans: 'Zen Maru Gothic', ui-sans-serif, system-ui, sans-serif;
+	--font-heading: 'Zen Maru Gothic', ui-sans-serif, system-ui, sans-serif;
+	--font-logo: 'Finger Paint', cursive;
 	--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+:root[data-theme='dark'] {
+	--black: 240, 240, 240;
+	--bg: 15, 19, 21;
+	--card-bg: 25, 31, 34;
+	--heading: 94, 214, 200; /* bright teal, for contrast on dark bg */
+	--accent: 227, 176, 220; /* light orchid, for contrast on dark bg */
+	--gray: 168, 168, 168;
+	--gray-light: 50, 57, 61;
+	--gray-dark: 235, 235, 235;
 }
 body {
 	font-family: var(--font-sans);
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: rgb(var(--bg));
+	background: linear-gradient(
+		160deg,
+		rgba(var(--mint), 0.16) 0%,
+		rgba(var(--bg), 1) 30%,
+		rgba(var(--bg), 1) 65%,
+		rgba(var(--accent2), 0.1) 100%
+	);
+	background-attachment: fixed;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
 	font-size: 16px;
 	line-height: 1.6;
+	transition: background-color 0.2s ease, color 0.2s ease;
 }
 ::selection {
 	background: rgb(var(--accent2));
-	color: rgb(var(--heading));
+	color: rgb(10, 14, 16);
 }
 main {
 	width: 600px;
@@ -125,7 +147,7 @@ code {
 }
 pre {
 	padding: 1.2em;
-	background: #fff;
+	background: rgb(var(--card-bg));
 	border: 1px solid rgba(var(--accent2), 40%);
 	border-radius: 6px;
 	overflow-x: auto;
@@ -145,6 +167,68 @@ blockquote {
 hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
+}
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+	padding: 0.65em 1.3em;
+	border-radius: 999px;
+	border: none;
+	background: rgb(var(--btn-bg));
+	color: #fff;
+	font-family: var(--font-sans);
+	font-weight: 700;
+	font-size: 0.95rem;
+	line-height: 1;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: background-color 0.2s ease, transform 0.15s ease;
+}
+.btn:hover {
+	background: rgb(var(--btn-bg-hover));
+	color: #fff;
+}
+.btn:active {
+	transform: scale(0.96);
+}
+.tag-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5em;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+a.tag-pill {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.3em 0.8em;
+	border-radius: 999px;
+	background: rgba(var(--mint), 0.4);
+	color: rgb(var(--heading));
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-decoration: none;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+a.tag-pill:hover {
+	background: rgb(var(--accent2));
+	color: #fff;
+}
+a.tag-pill.is-active {
+	background: rgb(var(--btn-bg));
+	color: #fff;
+}
+#reading-progress {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 3px;
+	width: 0%;
+	background: linear-gradient(90deg, rgb(var(--heading)), rgb(var(--accent2)));
+	z-index: 100;
+	transition: width 0.1s linear;
 }
 @media (max-width: 720px) {
 	main {

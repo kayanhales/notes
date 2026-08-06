@@ -1,0 +1,57 @@
+<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
+	<svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18">
+		<path
+			fill="currentColor"
+			d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-15a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1Zm0 18a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1ZM4.22 4.22a1 1 0 0 1 1.42 0l.7.71a1 1 0 1 1-1.41 1.41l-.71-.7a1 1 0 0 1 0-1.42Zm13.44 13.44a1 1 0 0 1 1.42 0l.7.71a1 1 0 0 1-1.41 1.41l-.71-.7a1 1 0 0 1 0-1.42ZM1 12a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1Zm18 0a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2h-1a1 1 0 0 1-1-1ZM4.22 19.78a1 1 0 0 1 0-1.42l.7-.7a1 1 0 1 1 1.41 1.41l-.7.71a1 1 0 0 1-1.42 0ZM17.66 6.34a1 1 0 0 1 0-1.42l.71-.7a1 1 0 0 1 1.41 1.41l-.7.71a1 1 0 0 1-1.42 0Z"
+		></path>
+	</svg>
+	<svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18">
+		<path
+			fill="currentColor"
+			d="M20.35 14.5A8.5 8.5 0 0 1 9.5 3.65a.75.75 0 0 0-.95-.95A10 10 0 1 0 21.3 15.45a.75.75 0 0 0-.95-.95Z"
+		></path>
+	</svg>
+</button>
+<style>
+	.theme-toggle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 20px;
+		height: 20px;
+		padding: 0;
+		border: none;
+		background: none;
+		color: rgb(var(--accent2));
+		cursor: pointer;
+	}
+	.theme-toggle:hover {
+		color: rgb(var(--accent));
+	}
+	.icon-moon {
+		display: none;
+	}
+	:root[data-theme='dark'] .icon-sun {
+		display: none;
+	}
+	:root[data-theme='dark'] .icon-moon {
+		display: block;
+	}
+</style>
+
+<script>
+	function initThemeToggle() {
+		const btn = document.getElementById('theme-toggle');
+		if (!btn || btn.dataset.bound === 'true') return;
+		btn.dataset.bound = 'true';
+		btn.addEventListener('click', () => {
+			const current = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+			const next = current === 'dark' ? 'light' : 'dark';
+			document.documentElement.dataset.theme = next;
+			localStorage.setItem('theme', next);
+		});
+	}
+
+	initThemeToggle();
+	document.addEventListener('astro:page-load', initThemeToggle);
+</script>

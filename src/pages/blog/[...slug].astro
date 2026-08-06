@@ -4,17 +4,28 @@ import BlogPost from '../../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
+	return posts.map((post) => {
+		const related = posts
+			.filter((p) => p.id !== post.id && p.data.tags.some((tag) => post.data.tags.includes(tag)))
+			.sort((a, b) => {
+				const aShared = a.data.tags.filter((tag) => post.data.tags.includes(tag)).length;
+				const bShared = b.data.tags.filter((tag) => post.data.tags.includes(tag)).length;
+				if (bShared !== aShared) return bShared - aShared;
+				return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+			})
+			.slice(0, 3);
+		return {
+			params: { slug: post.id },
+			props: { post, related },
+		};
+	});
 }
-type Props = CollectionEntry<'blog'>;
+type Props = { post: CollectionEntry<'blog'>; related: CollectionEntry<'blog'>[] };
 
-const post = Astro.props;
+const { post, related } = Astro.props;
 const { Content, headings } = await render(post);
 ---
 
-<BlogPost {...post.data} headings={headings}>
+<BlogPost {...post.data} id={post.id} headings={headings} related={related}>
 	<Content />
 </BlogPost>

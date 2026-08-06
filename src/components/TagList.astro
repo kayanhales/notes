@@ -1,0 +1,22 @@
+---
+interface Props {
+	tags: string[];
+	activeTag?: string;
+}
+
+const { tags, activeTag } = Astro.props;
+---
+
+{
+	tags.length > 0 && (
+		<ul class="tag-list">
+			{tags.map((tag) => (
+				<li>
+					<a href={`/tags/${tag}/`} class:list={['tag-pill', { 'is-active': tag === activeTag }]}>
+						{tag}
+					</a>
+				</li>
+			))}
+		</ul>
+	)
+}

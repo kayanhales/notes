@@ -4,6 +4,10 @@ description: Configure Amazon EFS so multiple Linux EC2 instances can
 pubDate: 2021-06-09
 title: How to Set Up Amazon EFS for Multiple EC2 Linux Instances
 updatedDate: 2026-08-04
+tags:
+  - aws
+  - linux
+  - devops
 ---
 
 > Originally written in 2021. Updated in 2026 with current AWS
