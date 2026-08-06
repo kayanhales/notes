@@ -20,8 +20,11 @@ const recentPosts = (await getCollection('blog'))
 	<body>
 		<Header />
 		<main>
-			<h1 class="intro">Welcome! Here, you'll find my notes on a variety of topics, 
-				including technology, faith, career, motherhood, immigration and everyday life.
+			<h1 class="intro">
+				<span class="brand">Welcome!</span> Here, you'll find my notes on a variety of topics,
+				including <span class="topic topic-a">technology</span>, <span class="topic topic-b">faith</span>,
+				<span class="topic topic-c">career</span>, <span class="topic topic-d">motherhood</span>,
+				<span class="topic topic-e">immigration</span> and <span class="topic topic-a">everyday life</span>.
 			</h1>
 			<section class="recent-posts">
 				<ul>
@@ -52,6 +55,36 @@ const recentPosts = (await getCollection('blog'))
 <style>
 	.intro {
 		color: rgb(var(--gray));
+	}
+	.intro .brand {
+		font-family: var(--font-logo);
+		color: rgb(var(--heading));
+	}
+	.intro .topic {
+		display: inline-block;
+		padding: 0 0.25em;
+		border-radius: 0.35em;
+		white-space: nowrap;
+	}
+	.topic-a {
+		background: rgb(var(--accent2));
+		color: #fff;
+	}
+	.topic-b {
+		background: rgb(var(--heading));
+		color: #fff;
+	}
+	.topic-c {
+		background: rgb(var(--accent));
+		color: #fff;
+	}
+	.topic-d {
+		background: rgb(var(--mint));
+		color: rgb(var(--heading));
+	}
+	.topic-e {
+		background: rgb(var(--lime));
+		color: #fff;
 	}
 	.recent-posts {
 		margin-top: 3em;
