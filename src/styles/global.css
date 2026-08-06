@@ -20,8 +20,8 @@
 	--gray: 148, 148, 148;
 	--gray-light: 221, 221, 221;
 	--gray-dark: 0, 0, 0;
-	--font-sans: 'Comfortaa', ui-sans-serif, system-ui, sans-serif;
-	--font-heading: 'Caveat', cursive;
+	--font-sans: 'Maven Pro', ui-sans-serif, system-ui, sans-serif;
+	--font-heading: 'Maven Pro', ui-sans-serif, system-ui, sans-serif;
 	--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 body {
