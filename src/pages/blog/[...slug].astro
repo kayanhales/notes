@@ -1,9 +1,10 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
+import { type CollectionEntry, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
+import { getPublishedPosts } from '../../utils/posts';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
+	const posts = await getPublishedPosts();
 	return posts.map((post) => {
 		const related = posts
 			.filter((p) => p.id !== post.id && p.data.tags.some((tag) => post.data.tags.includes(tag)))
