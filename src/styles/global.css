@@ -20,12 +20,12 @@
 	--mint: 166, 255, 0; /* Neon Lime */
 	--gray: 148, 148, 148;
 	--gray-light: 221, 221, 221;
-	--gray-dark: 0, 0, 0;
-	--btn-bg: var(--heading);
-	--btn-bg-hover: var(--accent);
+	--gray-dark: 0,0,0;
+	--btn-bg: var(--accent);
+	--btn-bg-hover: var(--heading);
 	--font-sans: 'Zen Maru Gothic', ui-sans-serif, system-ui, sans-serif;
 	--font-heading: 'Zen Maru Gothic', ui-sans-serif, system-ui, sans-serif;
-	--font-logo: 'Finger Paint', cursive;
+	--font-logo: 'Caveat', cursive;
 	--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 :root[data-theme='dark'] {
