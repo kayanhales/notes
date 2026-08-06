@@ -20,7 +20,7 @@ const recentPosts = (await getCollection('blog'))
 	<body>
 		<Header />
 		<main>
-			<h1>Welcome! What you'll find here are my notes on a variety of topics, including technology, faith, career, motherhood, immigration and everyday life.
+			<h1 class="intro">Welcome! What you'll find here are my notes on a variety of topics, including technology, faith, career, motherhood, immigration and everyday life.
 			</h1>
 			<section class="recent-posts">
 				<ul>
@@ -49,6 +49,9 @@ const recentPosts = (await getCollection('blog'))
 	</body>
 </html>
 <style>
+	.intro {
+		color: rgb(var(--gray-dark));
+	}
 	.recent-posts {
 		margin-top: 3em;
 	}

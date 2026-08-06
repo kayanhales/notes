@@ -13,16 +13,16 @@
 	--black: 0, 0, 0;
 	--bg: 255, 255, 255;
 	--card-bg: 255, 255, 255;
-	--heading: 8, 99, 117; /* Stormy Teal */
-	--accent: 60, 22, 66; /* Dark Amethyst */
-	--accent2: 29, 211, 176; /* Turquoise */
-	--lime: 175, 252, 65; /* Green Yellow */
-	--mint: 178, 255, 158; /* Light Green */
+	--heading: 110, 0, 255; /* Electric Violet */
+	--accent: 214, 0, 111; /* Neon Magenta */
+	--accent2: 0, 144, 218; /* Neon Cyan-Blue */
+	--lime: 255, 95, 0; /* Neon Orange */
+	--mint: 166, 255, 0; /* Neon Lime */
 	--gray: 148, 148, 148;
 	--gray-light: 221, 221, 221;
 	--gray-dark: 0, 0, 0;
-	--btn-bg: 8, 99, 117;
-	--btn-bg-hover: 60, 22, 66;
+	--btn-bg: var(--heading);
+	--btn-bg-hover: var(--accent);
 	--font-sans: 'Zen Maru Gothic', ui-sans-serif, system-ui, sans-serif;
 	--font-heading: 'Zen Maru Gothic', ui-sans-serif, system-ui, sans-serif;
 	--font-logo: 'Finger Paint', cursive;
@@ -30,12 +30,13 @@
 }
 :root[data-theme='dark'] {
 	--black: 240, 240, 240;
-	--bg: 15, 19, 21;
-	--card-bg: 25, 31, 34;
-	--heading: 94, 214, 200; /* bright teal, for contrast on dark bg */
-	--accent: 227, 176, 220; /* light orchid, for contrast on dark bg */
-	--gray: 168, 168, 168;
-	--gray-light: 50, 57, 61;
+	--bg: 22, 22, 24;
+	--card-bg: 34, 34, 38;
+	--heading: 179, 102, 255; /* bright neon violet, for contrast on dark gray bg */
+	--accent: 255, 77, 196; /* bright neon magenta, for contrast on dark gray bg */
+	--accent2: 56, 189, 255; /* bright neon cyan-blue, for contrast on dark gray bg */
+	--gray: 165, 165, 170;
+	--gray-light: 52, 52, 56;
 	--gray-dark: 235, 235, 235;
 }
 body {
@@ -43,14 +44,7 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: linear-gradient(
-		160deg,
-		rgba(var(--mint), 0.16) 0%,
-		rgba(var(--bg), 1) 30%,
-		rgba(var(--bg), 1) 65%,
-		rgba(var(--accent2), 0.1) 100%
-	);
-	background-attachment: fixed;
+	background: rgb(var(--bg));
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
@@ -79,7 +73,7 @@ h6 {
 	line-height: 1.2;
 	letter-spacing: normal;
 	font-family: var(--font-heading);
-	font-weight: 700;
+	font-weight: 500;
 }
 h1 {
 	font-size: 2.6em;
