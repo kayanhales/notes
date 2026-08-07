@@ -7,7 +7,7 @@ tags:
   - Bible reflection
   - grace
   - legalism
-draft: true
+draft: false
 ---
 
 I was reading the opening chapters of 1 Kings, and I could not get past what felt like an obvious injustice.
@@ -85,7 +85,7 @@ The truth I want to carry forward is this:
 
 I still care about justice. I still have difficult questions about David's story. Knowing God does not require me to call unequal treatment fair or to pretend that suffering does not hurt.
 
-But thanks be to God for using an uncomfortable passage to surface the bargain hiding inside my faith—not to condemn me, but to invite me into a relationship that is less transactional and more honest.
+But thanks be to God for using an uncomfortable passage to surface the bargain hiding inside my faith, not to condemn me, but to invite me into a relationship that is less transactional and more honest.
 
 I do want to know God. And now I can ask him to keep teaching me to want him, not merely the life I hope he will give me.
 

@@ -21,10 +21,10 @@ const recentPosts = (await getPublishedPosts())
 		<Header />
 		<main>
 			<h1 class="intro">
-				<span class="brand">Welcome!</span> Here, you'll find my notes on a variety of topics,
+				<span class="brand">Welcome!</span><p> Here, you'll find my notes on a variety of topics,
 				including <span class="topic topic-a">technology</span>, <span class="topic topic-b">faith</span>,
 				<span class="topic topic-c">career</span>, <span class="topic topic-d">motherhood</span>,
-				<span class="topic topic-e">immigration</span> and <span class="topic topic-a">everyday life</span>.
+				<span class="topic topic-e">immigration</span> and <span class="topic topic-a">everyday life</span>.</p>
 			</h1>
 			<section class="recent-posts">
 				<ul>
@@ -65,6 +65,7 @@ const recentPosts = (await getPublishedPosts())
 		padding: 0 0.25em;
 		border-radius: 0.35em;
 		white-space: nowrap;
+		margin: 0.1em 0 0.1em 0;
 	}
 	.topic-a {
 		background: rgb(var(--accent2));
