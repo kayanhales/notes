@@ -16,7 +16,7 @@ tags:
 
 ## What I switched
 
-I moved from an iPhone 16 Pro on AT&T to a Google Pixel 11 on Mint Mobile. I took advantage of an early Black Friday deal Google was offering on the Pixel. I first moved my number to Mint and activated it on the iPhone, then transferred the service to the Pixel. I had switched carriers and phones in quick succession, and that made it hard to tell whether the missing messages were an Apple/iMessage issue, a Mint activation or routing issue, or a bit of both.
+I moved from an **iPhone 16 Pro on AT&T to a Google Pixel 11 on Mint Mobile**. I took advantage of an early Black Friday deal Google was offering on the Pixel. I first moved my number to Mint and activated it on the iPhone, then transferred the service to the Pixel. I had switched carriers and phones in quick succession, and that made it hard to tell whether the missing messages were an Apple/iMessage issue, a Mint activation or routing issue, or a bit of both.
 
 ## The problem
 
