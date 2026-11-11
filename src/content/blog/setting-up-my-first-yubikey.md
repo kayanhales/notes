@@ -1,9 +1,9 @@
 ---
 description: My first YubiKey setup with Google and Bitwarden, the passkey mistake
   that confused me, and how I tested the key on my MacBook and Pixel.
-pubDate: 2026-11-09
+pubDate: 2026-12-09
 title: "Setting Up My First YubiKey: What Confused Me and What Finally Clicked"
-updatedDate: 2026-11-09
+updatedDate: 2026-12-09
 tags:
   - technology
   - security
